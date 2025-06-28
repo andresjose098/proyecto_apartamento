@@ -1,0 +1,49 @@
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow-lg" style="max-width: 420px; border: none;">
+    <div class="card-header text-center bg-primary text-white">
+      <h2 class="mb-0 fw-semibold">Iniciar sesión</h2>
+      <small class="fw-light">Conjunto Residencial El Bosque</small>
+    </div>
+
+    <div class="card-body p-4">
+      <%= form_for(resource,
+                   as: resource_name,
+                   url: session_path(resource_name),
+                   html: { class: "needs-validation" }) do |f| %>
+
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label fw-semibold" %>
+          <%= f.email_field :email,
+                            class: "form-control",
+                            autofocus: true,
+                            autocomplete: "email",
+                            required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password, class: "form-label fw-semibold" %>
+          <%= f.password_field :password,
+                               class: "form-control",
+                               autocomplete: "current-password",
+                               required: true %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check mb-3">
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <%= f.label :remember_me, class: "form-check-label" %>
+          </div>
+        <% end %>
+
+        <div class="d-grid">
+          <%= f.submit "Entrar", class: "btn btn-primary fw-semibold" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card-footer text-center small bg-light">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
